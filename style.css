@@ -1,0 +1,201 @@
+/* ---------- Reset & tokens ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --green: #596d48;
+  --green-dark: #475839;
+  --border: #e5e7eb;
+  --focus: #3b82f6;
+  --invalid: #dc2626;
+  --text: #111827;
+  --muted: #6b7280;
+}
+
+/*
+  Logo font: download Norse Bold from https://www.joelcarrouche.com/fonts/norse
+  into a /fonts folder, then uncomment this block.
+
+@font-face {
+  font-family: "Norse";
+  src: url("fonts/Norse-Bold.woff2") format("woff2");
+  font-weight: 700;
+}
+*/
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ---------- Layout ---------- */
+main {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(420px, 1.3fr);
+  min-height: 100vh;
+}
+
+/* ---------- Left: hero ---------- */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  /* Swap the gradient for your downloaded image, e.g. url("imgs/background.jpg") */
+  background:
+    linear-gradient(160deg, #3c4a33 0%, #6d7f58 45%, #2a2f25 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 32px 40px;
+  margin-top: 48px;
+  background-color: rgb(0 0 0 / 0.6);
+  color: #fff;
+}
+
+.logo-img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-family: "Norse", "Cinzel", Georgia, serif;
+  font-weight: 700;
+  font-size: 4.5rem;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.credit {
+  position: absolute;
+  bottom: 16px;
+  left: 24px;
+  font-size: 0.75rem;
+  color: rgb(255 255 255 / 0.8);
+}
+
+.credit a {
+  color: inherit;
+}
+
+/* ---------- Right: form ---------- */
+.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  padding: 48px clamp(32px, 8vw, 120px);
+}
+
+.signup-intro h1 {
+  font-size: 1.875rem;
+  margin-bottom: 8px;
+}
+
+.signup-intro p {
+  color: var(--muted);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+fieldset {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+  border: none;
+}
+
+legend {
+  font-weight: 600;
+  font-size: 1rem;
+  padding-bottom: 14px;
+  margin-bottom: 4px;
+  width: 100%;
+  border-bottom: 1px solid var(--border);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+input {
+  font: inherit;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  background-color: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.2);
+}
+
+/* Only flag an invalid password once the user has interacted with it */
+input[type="password"]:user-invalid {
+  border-color: var(--invalid);
+}
+
+input[type="password"]:user-invalid:focus {
+  box-shadow: 0 0 0 3px rgb(220 38 38 / 0.2);
+}
+
+/* ---------- Button & links ---------- */
+button {
+  align-self: flex-start;
+  padding: 12px 28px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--green);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+button:hover {
+  background-color: var(--green-dark);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.login-link {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.login-link a {
+  color: var(--green);
+  font-weight: 600;
+}
